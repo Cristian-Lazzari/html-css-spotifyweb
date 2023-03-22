@@ -5,28 +5,77 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background-color: var(--bg-primary);
 }
 :root{
     --bg-primary: #141922;
+    --bg-secondary: #282828;
+    --text-second: #6C6C6C;
 }
-
+ul{
+    list-style: none;
+}
 /************************
-    BUTTON
+BUTTON
+*************************/
+.button-up-grade{
+    border: 2px solid white;
+    padding: .5rem .8em;
+    border-radius: 4rem;
+    color: white;
+}
+/************************
+SIDE-NAV
+*************************/
+.side-nav{
+    background-color: black;
+    height: calc(100vh - 5rem);
+    width: 20rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    color:  var(--text-second);
+}
+.side-nav .logo{
+    width: 70%;
+    fill: white;
+}
+/************************
+TOP-BAR
+*************************/
+.top-bar{
+    display:flex;
+    justify-content: flex-end;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: calc(100vw - 20rem);
+    background-color: black;
+    opacity: 0.5;
+    padding: 1rem;
+}
+/************************
+MAIN
 *************************/
 
-/************************
-    SIDE-NAV
-*************************/
-
-/************************
-    TOP-BAR
-*************************/
-
-/************************
-    MAIN
-*************************/
-
+.main-container{
+    background-color: var(--bg-primary);
+    margin-left: 20rem;
+    overflow-x: scroll;
+    padding-top: 4rem;
+    margin-right: 0;
+}
 /************************
     BOTTOM-BAR
 *************************/
+.bottom-bar{
+    background-color: var(--bg-secondary);
+    position: fixed;
+    width: 100%;
+    height: 5rem;
+    bottom: 0;
+    left: 0;
+
+}
