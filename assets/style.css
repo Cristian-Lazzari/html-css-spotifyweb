@@ -6,10 +6,17 @@
     box-sizing: border-box;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+body{
+    color: var(--text-second);
+}
 :root{
     --bg-primary: #141922;
     --bg-secondary: #282828;
     --text-second: #6C6C6C;
+    --size-mobile: 550px;
+    --size-tablet: 1100;
+
+    --gap-container-card: 1rem;
 }
 ul{
     list-style: none;
@@ -21,6 +28,7 @@ h3{
 /************************
 BUTTON
 *************************/
+
 .button-up-grade{
     border: 2px solid white;
     padding: .5rem .8em;
@@ -28,12 +36,34 @@ BUTTON
     color: white;
     width: fit-content;
 }
+
+/************************
+TOP-BAR
+*************************/
+.top-bar{
+    display:flex;
+    justify-content: flex-end;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: calc(100vw - 230px);
+    background-color: black;
+    opacity: 0.5;
+    padding: 1rem 1.3rem 1.5rem 1.7rem;
+    z-index: 1;
+}
+@media screen and (max-width: 700px) {
+    .top-bar{
+        width: calc(1000vw - 80px);
+    }
+}
+
 /************************
 SIDE-NAV
 *************************/
 .side-nav{
     background-color: black;
-    height: calc(100vh - 5rem);
+    height: calc(100vh - 60px);
     width: 230px;
     position: fixed;
     padding: 1rem;
@@ -41,9 +71,9 @@ SIDE-NAV
     left: 0;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between;
     gap: 1.3rem; 
-    color:  var(--text-second);
+
 }
 .side-nav .logo{
     width: 70%;
@@ -67,6 +97,7 @@ SIDE-NAV
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    height: 100%;
     
 }
 .playlist .crea-playlist{
@@ -94,42 +125,96 @@ SIDE-NAV
 }
 .small{
     display: none;
+    width: 80%;
+
 }
-/************************
-TOP-BAR
-*************************/
-.top-bar{
-    display:flex;
-    justify-content: flex-end;
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: calc(100vw - 20rem);
-    background-color: black;
-    opacity: 0.5;
-    padding: 1rem;
+@media screen and (max-width: 700px ) {
+    .side-nav{
+        width: 80px;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    .main-menu span, .playlist{
+        display: none;
+    }
+    .main-menu{
+        height: 100%;
+    }
+    .side-nav img:first-child{
+        display: none;
+    }
+    .small{
+        display: block;
+    }
+    .main-container{
+        width: calc(100vw - 80px);
+    }
 }
+
 /************************
 MAIN
 *************************/
 
 .main-container{
     background-color: var(--bg-primary);
-    margin-left: 230px;
     overflow-y: auto;
     padding-top: 6rem;
-    margin-right: 0;
-    z-index: 1;
-    width: 100%;
-
+    padding: 6rem 1rem;
+    width: calc(100vw - 230px);
+    height: calc(100vh - 60px);
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.main-container> *{
+    margin-bottom: 1.5rem;
 }
 .main-container ul{
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     font-weight:bolder ;
-    color: var(--text-second);
     justify-content: center;
+}
+.row-song{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.card-song{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    width: calc((100% - 5 * var(--gap-container-card)) / 6);
+}
+.card-song img{
+    width: 100%;
+}
+.description{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5em;
+}
+.description h3{
+    text-align: center;
+}
+@media screen and (max-width: 1100px) {
+   
+    .card-song{
+        width: calc((100% - 3 * var(--gap-container-card)) / 4);
+    }
+}
+@media screen and (max-width: 700px) {
+   
+    .main-container{
+        width: calc(100vw - 80px);
+    }
+    .card-song{
+        width: calc((100% - var(--gap-container-card)) / 2);
+    }
 }
 /************************
     BOTTOM-BAR
@@ -138,8 +223,30 @@ MAIN
     background-color: var(--bg-secondary);
     position: fixed;
     width: 100%;
-    height: 5rem;
+    height: 60px;
     bottom: 0;
     left: 0;
-    z-index: 9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 2;
+    padding: 6px;
+}
+.left-bar{
+    height: 100%;display: flex;
+    align-items: center;
+    gap: 10%;
+    width: fit-content;
+}
+.bottom-bar .left-bar img{
+    height: 70%;
+}
+.left-bar .name-song{
+    display: flex;
+    flex-direction: column;
+    min-width: 70px;
+}
+.left-bar .like-save{
+    display: flex;
+    gap: 1rem;
 }
